@@ -1,7 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"github.com/chenjunqian/go-markitdown/internal/cmd"
+	"github.com/gogf/gf/v2/os/gctx"
+)
 
 func main() {
-	fmt.Println("Hello, Markitdown!")
+	cmd.Main.Run(gctx.GetInitCtx())
 }
