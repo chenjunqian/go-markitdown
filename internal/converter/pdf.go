@@ -1,14 +1,13 @@
 package converter
 
 import (
-	"os"
 	"path/filepath"
 	"strings"
 
 	md "github.com/JohannesKaufmann/html-to-markdown"
+	"github.com/gogf/gf/v2/os/gfile"
 
 	"github.com/gen2brain/go-fitz"
-	"github.com/gogf/gf/v2/os/gfile"
 )
 
 type PDFConverter struct {
@@ -22,51 +21,46 @@ func GetPDFConverter() *PDFConverter {
 
 func (c *PDFConverter) Convert(localPath string, opt Options) (result DocumentConvertResult, err error) {
 
-	err = convertPDFToMDWithStyle(localPath, opt.OutputPath)
-	var fileName string
-	var outputFileName string
-	if opt.OutputPath == "" {
-		outputFileName = filepath.Base(localPath)
-	} else {
-		outputFileName = filepath.Base(opt.OutputPath)
+	var mdContent string
+	mdContent, err = convertPDFToMDWithStyle(localPath)
+	if opt.OutputPath != "" {
+		err = gfile.PutContents(opt.OutputPath, mdContent)
+		if err != nil {
+			return
+		}
 	}
-	fileName = strings.TrimSuffix(outputFileName, filepath.Ext(outputFileName))
 	result = DocumentConvertResult{
-		Title:   fileName,
-		Content: gfile.GetContents(opt.OutputPath),
+		Title:   strings.TrimSuffix(filepath.Base(localPath), filepath.Ext(localPath)),
+		Content: mdContent,
 	}
 	return
 }
 
-func convertPDFToMDWithStyle(pdfPath, mdPath string) error {
+func convertPDFToMDWithStyle(pdfPath string) (mdContent string, err error) {
 	doc, err := fitz.New(pdfPath)
 	if err != nil {
-		return err
+		return
 	}
 	defer doc.Close()
 
 	numPages := doc.NumPage()
-	var mdContent string
 
 	for i := 0; i < numPages; i++ {
-		html, err := doc.HTML(i, true)
+		var html string
+		html, err = doc.HTML(i, true)
 		if err != nil {
-			return err
+			return
 		}
 
 		converter := md.NewConverter("", true, nil)
-		text, err := converter.ConvertString(html)
+		var text string
+		text, err = converter.ConvertString(html)
 		if err != nil {
-			return err
+			return
 		}
 
 		mdContent += text + "\n\n"
 	}
 
-	err = os.WriteFile(mdPath, []byte(mdContent), 0644)
-	if err != nil {
-		return err
-	}
-
-	return nil
+	return
 }
