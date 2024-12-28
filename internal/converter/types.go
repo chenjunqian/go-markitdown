@@ -18,5 +18,7 @@ type DocumentConvertResult struct {
 type SourceContentType string
 
 const (
-	PDF SourceContentType = "pdf"
+	PDF  SourceContentType = "pdf"
+	HTML SourceContentType = "html"
+	DOCX SourceContentType = "docx"
 )

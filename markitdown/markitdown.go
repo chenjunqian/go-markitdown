@@ -16,6 +16,8 @@ var converters map[string]converter.Converter
 func init() {
 	converters = map[string]converter.Converter{
 		string(converter.PDF): converter.GetPDFConverter(),
+		string(converter.HTML): converter.GetHTMLConverter(),
+		string(converter.DOCX): converter.GetDocxConverter(),
 	}
 }
 

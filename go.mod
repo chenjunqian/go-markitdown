@@ -2,13 +2,17 @@ module github.com/chenjunqian/go-markitdown
 
 go 1.22.2
 
-require github.com/gogf/gf/v2 v2.8.3
+require (
+	github.com/gogf/gf/v2 v2.8.3
+	github.com/mattn/go-runewidth v0.0.16
+)
 
 require (
 	github.com/PuerkitoBio/goquery v1.9.2 // indirect
 	github.com/andybalholm/cascadia v1.3.2 // indirect
 	github.com/ebitengine/purego v0.8.0 // indirect
 	github.com/jupiterrider/ffi v0.2.0 // indirect
+	github.com/rivo/uniseg v0.4.7 // indirect
 )
 
 require (
