@@ -25,8 +25,8 @@ type DocxConverter struct {
 
 var docxConv *DocxConverter = new(DocxConverter)
 
-func GetDocxConverter() *PDFConverter {
-	return pdfConv
+func GetDocxConverter() *DocxConverter {
+	return docxConv
 }
 
 func (c *DocxConverter) Convert(localPath string, opt Options) (result DocumentConvertResult, err error) {
