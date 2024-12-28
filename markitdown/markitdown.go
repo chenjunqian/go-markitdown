@@ -18,6 +18,7 @@ func init() {
 		string(converter.PDF): converter.GetPDFConverter(),
 		string(converter.HTML): converter.GetHTMLConverter(),
 		string(converter.DOCX): converter.GetDocxConverter(),
+		string(converter.EXCEL): converter.GetXlsxConverter(),
 	}
 }
 
