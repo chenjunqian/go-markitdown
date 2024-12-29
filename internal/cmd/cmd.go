@@ -22,8 +22,9 @@ var (
 			)
 			fileSourceOpt := parser.GetOpt("f")
 			outputPathOpt := parser.GetOpt("o")
-			if fileSourceOpt.IsNil() {
+			if fileSourceOpt.IsNil() || fileSourceOpt.String() == "" {
 				err = errors.New("Please input the path of the file to be converted with the -f parameter.")
+				return
 			}
 
 			if outputPathOpt.IsNil() {
