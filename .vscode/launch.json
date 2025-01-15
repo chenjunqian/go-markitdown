@@ -9,7 +9,15 @@
             "type": "go",
             "request": "launch",
             "mode": "auto",
-            "program": "${workspaceFolder}/main.go"
+            "program": "${workspaceFolder}/main.go",
+            "args": [
+                "/workspaces/go-markitdown/internal/converter/testdata/test_pdf_code_block.pdf",
+                "/workspaces/go-markitdown/output.md",
+                // "-o",
+                // "/workspaces/go-markitdown/output.md",
+                // "-f",
+                // "/workspaces/go-markitdown/internal/converter/testdata/test_pdf_code_block.pdf"
+            ]
         }
     ]
 }

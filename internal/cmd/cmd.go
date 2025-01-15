@@ -20,24 +20,35 @@ var (
 				fileSource string
 				outputPath string
 			)
+			allArgList := parser.GetArgAll()
 			fileSourceOpt := parser.GetOpt("f")
 			outputPathOpt := parser.GetOpt("o")
 			if fileSourceOpt.IsNil() || fileSourceOpt.String() == "" {
-				err = errors.New("Please input the path of the file to be converted with the -f parameter.")
-				return
+				if len(allArgList) >= 2 {
+					fileSource = allArgList[1]
+				} else {
+					err = errors.New("Please input the path of the file to be converted with the -f parameter.")
+					return
+				}
+			} else {
+				fileSource = fileSourceOpt.String()
 			}
 
 			if outputPathOpt.IsNil() {
-				outputPath, err = os.Getwd()
-				if err != nil {
-					return err
+				if len(allArgList) >= 3 {
+					outputPath = allArgList[2]
+				} else {
+					outputPath, err = os.Getwd()
+					if err != nil {
+						return err
+					}
+					outputPath = outputPath + "/markitdown_output.md"
 				}
-				outputPath = outputPath + "/markitdown_output.md"
+			} else {
+				outputPath = outputPathOpt.String()
 			}
 
-			fileSource = fileSourceOpt.String()
-			result ,err := markitdown.Convert(fileSource, outputPath)
-
+			result, err := markitdown.Convert(fileSource, outputPath)
 			title := result.Title
 			content := result.Content
 
