@@ -53,9 +53,8 @@ markitdown page.html page.md
 
 ## Flags
 
-- `-v` or `--version`: Show version information
-- `-h` or `--help`: Show help information
-- `-f` or `--format`: Specify output format (default: markdown)
+- `-f`: Specify the input file path
+- `-o`: Specify the output file path
 
 ## License
 
