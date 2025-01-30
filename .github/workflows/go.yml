@@ -36,9 +36,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
       with:
-        upload_url: ${{ github.event.release.upload_url }}
-        asset_path: '["./bin/darwin_amd64/markitdown", "./bin/linux_amd64/markitdown"]'
-        asset_content_type: application/octet-stream
+        asset_paths: '["./bin/darwin_amd64/markitdown", "./bin/linux_amd64/markitdown"]'
 
     - name: Cleanup
       run: rm -rf bin
