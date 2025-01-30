@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A powerful Go-based command-line tool and library for converting various file formats to Markdown.
+A Go-based command-line tool and library for converting various file formats to Markdown.
 
 ## Features
 
@@ -59,8 +59,3 @@ markitdown page.html page.md
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- Inspired by the need for better document conversion tools
-- Built with the amazing Go programming language

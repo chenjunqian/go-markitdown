@@ -2,7 +2,7 @@ gfcli:
   build:
     name:     "markitdown"
     arch:     "amd64,arm"
-    system:   "linux,darwin,windows"
-    version:  "v1.0.0"
+    system:   "linux,darwin"
+    version:  ""
     path:   "./bin"
     extra:    ""
