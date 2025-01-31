@@ -19,7 +19,7 @@ A Go-based command-line tool and library for converting various file formats to 
 2. Install the tool:
 
 ```bash
-go install github.com/yourusername/go-markitdown@latest
+go install github.com/chenjunqian/go-markitdown@latest
 ```
 
 ## Usage
