@@ -1,6 +1,6 @@
 module github.com/chenjunqian/go-markitdown
 
-go 1.22.2
+go 1.22.0
 
 require (
 	github.com/gogf/gf/v2 v2.8.3
